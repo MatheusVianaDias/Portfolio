@@ -38,15 +38,36 @@ header span {
 
 header .navegacao-primario {
     display: flex;
-    gap: 10px;
+    gap: 30px;
     align-items: center;
 }
 
 header .navegacao-primario li a {
-    padding: 10px;
+    /*padding: 10px;*/
     color: #fff;
+    width: 0px;
+    height: 0px;
     font-size: 1.3rem;
 }
+
+header .navegacao-primario li a::after {
+    content: '';
+    width: 0px;
+    height: 0px;
+    display: block;
+    border-bottom: 4px solid transparent;
+    transition: .9s;
+
+}
+
+header .navegacao-primario li a:hover::after {
+    width: 100%;
+    height: 0px;
+    padding: 0px;
+    border-bottom: 4px solid #dc3545
+}
+
+
 
 /* dowload cv secao */
 
@@ -126,6 +147,8 @@ header .navegacao-primario li a {
         transform: translate3d(0, 0, 0);
     }
 }
+
+
 
 /* seção principal sobre mim */
 
@@ -257,6 +280,17 @@ main .sobre {
     }
 }
 
+@keyframes ladoSecao {
+    from {
+        transition: .5s;
+        transform: translate3d(-60px, 0, 0);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
 /* responsivel */
 
 @media(max-width: 992px) {
@@ -272,6 +306,11 @@ main .sobre {
 
     }
 
+    header {
+        justify-content: space-between;
+        padding: 30px 70px;
+    }
+
     header .navegacao-primario {
         display: none;
 
@@ -280,6 +319,21 @@ main .sobre {
     header i {
         color: #f7f7f7;
         font-size: 3rem;
+    }
+
+    header .navegacao-primario.ativado {
+        background: linear-gradient(rgba(43,42,42, 0.176), rgba(46,46,46, 0.724));
+        position: absolute;
+        display: grid;
+        top: 80px;
+        color: white;
+        z-index: 1;
+        padding: 30px;
+        font-size: 1.6rem;
+        font-weight: bold;
+        border-radius: 0 0 4px 4px;
+        right: 20px;
+        animation: sobeSecao .8s ease-in forwards;
     }
 }
 
@@ -359,7 +413,7 @@ main .sobre {
     border-right: 2px solid transparent;
 }
 
-.my_services li::after{
+.my_services li::after {
     content: '';
     transition: .5s ease-in-out;
     border-radius: 9px;
@@ -384,4 +438,146 @@ main .sobre {
     height: 100%;
     border-bottom: 2px solid red;
     border-left: 2px solid red;
+}
+
+.my_resume {
+    color:#ffff;
+}
+
+.resume_generico {
+    padding: 30px;
+    display: grid;
+    justify-content: center;
+    align-items: start;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.resume_generico h2 {
+    font-family: 'Poppins';
+    font-size: 1.5rem;
+    background-color: #ff5d56;
+    justify-self: start;
+    padding: 10px;
+    border-radius: 1px;
+}
+
+.resume_generico h2 i {
+    margin-right: 10px;
+}
+
+.experience {
+    margin-bottom: 30px;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.education {
+    margin-bottom: 30px;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.experience_content ul {
+    color: #ff5d56;
+    gap: 10px;
+    display: flex;
+    cursor: pointer;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.resume_generico .experience_content div {
+    animation: ladoSecao .6s ease-in-out forwards;
+    display: none;
+    background-color: #222;
+    padding: 40px;
+}
+
+
+.resume_generico .experience_content div.ativo {
+    display: block;
+}
+
+.resume_generico .experience_content div::before {
+    content: '';
+    border-right: 30px solid transparent;
+    border-bottom: 30px solid #222;
+    position: absolute;
+    top: -20px;
+    left: 30px;
+    display: inline-block;
+}
+
+.resume_generico .experience_content div span {
+    color: #dc3545;
+    font-family: 'Poppins';
+    font-weight: bold;
+}
+
+.resume_generico .experience_content div h3 {
+    font-family: 'Poppins';
+    margin: 10px 0;
+}
+
+.resume_generico .experience_content div p {
+    color: #707070;
+    font-size: 1.1rem;
+}
+
+.experience_content ul li.ativo {
+    color: #3e3e3d;
+}
+
+/* CURSOS E PROJETOS */
+
+.resume_generico .education_content div {
+    background-color: #222;
+    padding: 40px;
+    display: none;
+    animation: ladoSecao .6s ease-in-out forwards;
+    position: relative;
+}
+
+.education_content ul {
+    color: #ff5d56;
+    gap: 10px;
+    display: flex;
+    cursor: pointer;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.resume_generico .education_content div::before {
+    content: '';
+    border-right: 30px solid transparent;
+    border-bottom: 30px solid #222;
+    position: absolute;
+    top: -20px;
+    left: 30px;
+    display: inline-block;
+}
+
+.resume_generico .education_content div span {
+    color: #dc3545;
+    font-family: 'Poppins';
+    font-weight: bold;
+}
+
+.resume_generico .education_content div h3 {
+    font-family: 'Poppins';
+    margin: 10px 0;
+}
+
+.resume_generico .education_content div p {
+    color: #707070;
+    font-size: 1.1rem;
+}
+
+.education_content ul li.ativo {
+    color: #3e3d3e;
+}
+
+.resume_generico .education_content div.ativo {
+    display: block;
 }
