@@ -559,10 +559,12 @@ main .sobre {
 
 .resume_generico .education_content div span {
     color: #dc3545;
+    justify-content: center;
+    display: flex;
     font-family: 'Poppins';
     font-weight: bold;
 }
-.resume_generico .education_content div span a {
+.resume_generico .education_content div  a {
     color: white;
     display: flex;
     align-items: center;
